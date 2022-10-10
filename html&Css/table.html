@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <style>
+        /* 去除列表的符号 即每一列的点 */
+        ul {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 无序列表ul里面只能放li，li里面随便放 -->
+    <ul>
+        <li>电子书</li>
+        <li>实体书</li>
+        <li>书</li>
+    </ul>
+    <!-- 有序列表 -->
+    <ol>
+        <li>电子书</li>
+        <li>实体书</li>
+        <li>书</li>
+    </ol>
+    <!-- 自定义列表 -->
+    <dl>
+        <!-- dt：自定义列表主题 -->
+        <dt>帮助中心</dt>
+        <!-- dd：主题里面的每一项内容 -->
+        <dd>账户管理</dd>
+        <dd>用户指南</dd>
+        <dt>推荐</dt>
+        <dd>阿对对对</dd>
+    </dl>
+
+    <!-- 表格 -->
+    <!-- table里面加属性 border为边框宽度,width,height -->
+    <table border="1">
+        <!-- tr:表格每行 包裹td -->
+        <tr>
+            <!-- td:单元格 -->
+            <td>ID</td>
+            <td>学号</td>
+        </tr>
+        <tr>
+            <td>XiaoJie</td>
+            <td>135</td>
+        </tr>
+        <tr>
+            <td>XiaoMing</td>
+            <td>185</td>
+        </tr>
+        <!-- 表格例二 -->
+    </table>
+    <table border="1">
+        <!-- caption是标题 -->
+        <caption><h4>Student</h4 ></caption>
+            <tr>
+                <!-- th:通常用于表格第一行 -->
+                <th>ID</th>
+                <th>学号</th>
+            </tr>
+            <tr>
+                <td>XiaoJie</td>
+                <td>135</td>
+            </tr>
+            <tr>
+                <td>XiaoMing</td>
+                <td>185</td>
+            </tr>
+    </table>
+    <!-- 表格例三 -->
+    <table border="1">
+        <!-- caption是标题 -->
+        <caption><h4>Student</h4 ></caption>
+            <!-- 结构化，分为head，body，foot -->
+            <thead>
+                <tr>
+                <!-- th:通常用于表格第一行 -->
+                   <th>ID</th>
+                   <th>学号</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                   <td>XiaoJie</td>
+                   <td>135</td>
+                </tr>
+                <tr>
+                  <td>XiaoMing</td>
+                  <td>185</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>总结</td>
+                    <td>Good</td>
+                </tr>
+            </tfoot>
+    </table>
+    <!-- 表格例四 合并单元格 -->
+    <table border="1">
+        <!-- caption是标题 -->
+        <caption><h4>Student</h4 ></caption>
+            <!-- 结构化，分为head，body，foot -->
+            <thead>
+                <tr>
+                <!-- th:通常用于表格第一行 -->
+                   <th>ID</th>
+                   <th>学号</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <!-- rowspan 多行合并，数值为合并个数 -->
+                   <td>XiaoJie</td>
+                   <td rowspan="2">135</td>
+                </tr>
+                <tr>
+                  <td>XiaoMing</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <!-- colspan 多列合并 -->
+                    <td colspan="2">总结</td>
+                </tr>
+            </tfoot>
+    </table>
+</body>
+</html>

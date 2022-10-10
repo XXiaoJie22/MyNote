@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 1.继承性 */
+        /* 文字控制属性都可以继承 */
+        /* 子代有的属性就不必继承父类属性 */
+        div {
+            color: red;
+        }
+
+        /* 2.层叠性 */
+
+        /* 3.优先级 */
+        /* 继承<通配符选择器<标签选择器<类选择器<id选择器<行内样式<!important */
+        p {
+            color: green !important;
+            font-size: 50px;
+        }
+        .p {
+            color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        这是div里面的文字
+        <div>这是div里面的span</div>
+    </div>
+    <p class="p">326</p>
+</body>
+</html>

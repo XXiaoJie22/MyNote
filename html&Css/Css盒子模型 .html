@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- link:favicon 浏览器标题栏图标 -->
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            /* 边框线 */
+            /* dashed 虚线 solid 实线 dotted 点线  */
+            border: 1px solid #000;
+            /* 一条边 border后面加- */
+            border-left: 1px solid #000;
+            /* 内边距  内容和盒子边缘之间 */
+            padding: 20px;
+            /* padding的属性可加复合属性，表示单独设置某个方向的内边距 最多4个值 */
+            /* 取2个值：上下 左右 */
+            /* padding: 20px 30px; */
+            /* 取三个值：上 左右 下 */
+            /* 取四个值：上 右 下 左，顺时针 */
+            
+         /* 内边距和边框线会撑大盒子 比如上面盒子大小就是300+1+20 */
+            /* 加上下面代码 不用自己做加减法 盒子大小就是300*300 */
+            /* 内减模式 */
+            box-sizing: border-box;
+
+            /* box-shadow: ; 加阴影 */
+
+           /* 外边距 两个盒子之间 */
+           /* 语法与内边距类似 */
+            margin: 50px;
+            /* 版心居中 */
+            /* margin: 0 auto; */
+            
+
+            /* 塌陷现象：互相嵌套的块级元素，子元素的margin-top会作用在父级元素上 */
+            /* 解决方法：1.别用，直接给父级加padding一样的效果或者给父级加border-top */
+            /* 2.给父级元素设置overflow: hidden */
+            /* 3.转换成行内块元素 */
+            /* 4.设置浮动 */
+
+        }
+        /* 清除默认样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            /* 所有标签都加上内减 */
+            box-sizing: border-box;
+        }
+
+        /* 先外到内：先宽高背景色，放内容，调节内容位置，控制文字细节 */
+    </style>
+</head>
+<body>
+    <div>
+        内容
+    </div>
+    <div>
+        内容
+    </div>
+</body>
+</html>

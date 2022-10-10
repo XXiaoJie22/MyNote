@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .result {
+            width: 200px;
+            height: 100px;
+            border: solid 1px #90b;
+        }
+    </style>
+</head>
+<body>
+    <button>发起请求</button>
+    <div class="result"></div>
+
+    <script>
+        const btn = document.querySelector('button');
+        const result = document.querySelector('.result');
+        let isSending = false; // 判断请求
+        let xhr = null;
+        btn.addEventListener('click',function(){
+           
+            
+            if(isSending) {
+                xhr.abort(); // 如果正在发送请求，则取消该请求 并创建一个新请求
+            } 
+            // 1.创建对象
+            xhr = new XMLHttpRequest();
+            isSending = true;
+
+            // 超时设置 2s
+            xhr.timeout = 2000;
+            // 超时回调
+            xhr.addEventListener('timeout',() => {
+                alert('请求超时');
+            });
+            // 网络异常回调 没网的时候调用
+            xhr.addEventListener('error',() => {
+                alert('网络异常');
+            });
+
+            // 2.初始化，设置请求方法和url
+            xhr.open('GET','http://127.0.0.1:8000/delay');
+            // 3.发送
+            xhr.send();
+            // 4.事件绑定 处理服务端返回的结果
+            // readystate 是xhr 对象中的属性，表示状态0 1 2 3 4
+            xhr.addEventListener('readystatechange',function(){
+                // 判断(服务端返回了所有的结果)
+                if (xhr.readyState === 4){
+                    // 判断响应状态码 200 404 403
+                    isSending = false;
+                    // 2xx 成功
+                    if(xhr.status >= 200 && xhr.status < 300  ){
+                        // 处理结果 行 头 空行 体
+                        // console.log(xhr.status); // 状态码
+                        // console.log(xhr.statusText);//状态字符串
+                        // console.log(xhr.getAllResponseHeaders);//所有响应头
+                        // console.log(xhr.response);//响应体
+
+                        result.innerHTML = xhr.response;
+                    }
+                }
+            });
+
+
+            // xhr.abort(); 可以取消请求
+
+        });
+    </script>
+</body>
+</html>

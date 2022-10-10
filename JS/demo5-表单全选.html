@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        table {
+            margin: 200px auto;
+            text-align: center;
+            border-collapse: collapse;
+        }
+        thead tr {
+            background-color: rgb(12, 165, 211);
+        }
+        th,td{
+            padding: 0 25px;
+            border: 0;
+            border-bottom: 1px solid rgb(183, 183, 183);
+            border-left: 1px solid rgb(185, 184, 184);
+        }
+        /* td {
+            padding: 0 25px;
+            border: 0;
+        } */
+    </style>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="ch"></th>
+                <th>商品</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>iPhone8</td>
+                <td>8000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>iPhone8</td>
+                <td>8000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>iPhone8</td>
+                <td>8000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>iPhone8</td>
+                <td>8000</td>
+            </tr>
+        </tbody>
+        <script>
+            var ch = document.getElementById('ch');
+            var th2 = document.querySelector('tbody').querySelectorAll('input');
+            ch.onclick = function (){
+
+                    for(i = 0;i<th2.length;i++){
+                        th2[i].checked = this.checked;
+                }
+            }
+            // 下面复选框全选中，则上面全选框选中
+            
+            for (i=0;i<th2.length;i++){
+                
+                th2[i].onclick = function(){
+                    var flag = true;
+                    for(var j = 0;j<th2.length;j++){
+                        if(!th2[j].checked){
+                            flag = false;
+                            break;
+                        }
+                       
+                    }
+                     ch.checked = flag;
+                }
+            }
+            
+        </script>
+    </table>
+</body>
+</html>

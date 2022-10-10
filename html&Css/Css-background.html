@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+            /* 背景图片 */
+            background-image: url(./images/pick.gif);
+            /* 背景平铺 */
+            /* repeat 默认值水平和垂直方向都平铺 no-repeat 不平铺 repeat-x 水平方向 repeat-y 垂直方向 */
+            background-repeat: no-repeat;
+            /* 背景位置 */
+            /* 取值：水平位置 垂直位置 */
+            /* 水平取值 left/center/right 垂直取值 top/center/buttom */
+            background-position: center center;
+            background-position: right 0;
+            background-position: right bottom;
+            /* 正数向右向下移动 负数向左向上移动 */
+            background-position: -52px 0px;
+            /* 连写 */
+            /* 不分先后顺序 */
+            /* 推荐 background: color image repeat position */
+
+            /* background: pink url(./images/蒂蒂.gif) no-repeat center center; */
+
+            /* background-size 改背景图片尺寸，后面可加1.数字+px，2.百分比，3.contain 包含，等比例缩放，不会超出盒子，4.cover 覆盖 等比例缩放，知道填满整个盒子 */
+            background-size: cover;
+
+            /* 显示模式 */
+
+            /* 块级元素 */
+            /* 独占一行 可以设置宽高 */
+            /* div p h form ul dl等等 */
+
+            /* 行内元素 */
+            /* 一行可以显示多个 不可以设置宽高 由里面的内容变高变宽 */
+            /* a span b u em等 */
+            
+            /* 行内块元素 */
+            /* 一行显示多个 可以设置宽高 */
+            /* input textarea button select img */
+
+            /* 显示模式转换 */
+            /* display: block 转换成块级元素 */
+            /* display: inline-block 转换成行内块元素 */
+            /* display: inline 转换成行内元素 */
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

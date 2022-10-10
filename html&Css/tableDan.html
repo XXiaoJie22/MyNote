@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- type属性值为text，文本框，用于输入单行文本 -->
+    <!-- type属性值为password，密码框，用于输入密码 -->
+    <!-- type属性值为radio, 单选框，用于多选一 -->
+    <!-- type属性值为checkbox，多选框，用于多选多 -->
+    <!-- type属性值为file，文件选择，用于上传文件 -->
+    <!-- type属性值为submit，提交按钮，用于提交 -->
+    <!-- type属性值为reset，重置按钮，用于重置 -->
+    <!-- type属性值为button，普通按钮，默认无功能，配合js添加功能 -->
+    文本框：<input type="text">
+    <br><br>
+    <!-- placeholder 占位符 -->
+    文本框：<input type="text" placeholder="请输入用户名">
+    <br><br>
+    密码框：<input type="password">
+    <br><br>
+    密码框：<input type="password" placeholder="密码">
+    <br><br>
+    单选框：<input type="radio">
+    <br><br>
+    <!-- 同name的为一组，一组内的只会选一个，加checked为默认选择 -->
+    性别：<input type="radio" name="sex">男 <input type="radio" name="sex" checked>女
+    <br><br>
+    <!-- 加label使文字可选 -->
+    <!-- 第一种方法 -->
+    性别：<input type="radio" name="sex" id="man"><label for="man">男</label> 
+    <!-- 第二种方法 -->
+    <label><input type="radio" name="sex">女
+    </label>
+    <br><br>
+    多选框：<input type="checkbox">
+    <br><br>
+    爱好：<input type="checkbox" checked>游戏 <input type="checkbox">番剧 <input type="checkbox">看书
+    <br><br>
+    上传文件：<input type="file">
+    <br><br>
+    上传多个文件：<input type="file" multiple>
+    <!-- div 无语义标签 每个独占一行 -->
+    <div>这是一个div标签</div>
+    <div>这是一个div标签</div>
+    <!-- span 无语义标签 一行可显示多个 -->
+    <span>这是一个span标签</span>
+    <span>这是一个span标签</span>
+    <br><br>
+    <!-- 网页不认识多个空格 -->
+    啊对对对    啊系系系
+    <br>
+    <!-- &nbsp;一个空格 -->
+    啊对对对&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;啊系系系
+</body>
+</html>

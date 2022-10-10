@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <div class="div1"></div>
+    </div>
+    <ul>
+        <li>123</li>
+        <li>123</li>
+        <li>123</li>
+    </ul>
+    <ol>
+        <li>321</li>
+        <li>321</li>
+        <li>321</li>
+    </ol>
+    <script>
+        // 1.父节点 parentNode
+        var div1 = document.querySelector('.div1');
+        // 得到的是离元素最近的父级节点，如果没有则返回null
+        console.log(div1.parentNode);
+        // 2.孩子节点
+        var ul = document.querySelector('ul');
+        console.log(ul.childNodes); // 返回的是所有节点，包括文本节点，即换行，一般不推荐使用
+        // 推荐用children
+        console.log(ul.children);
+        console.log(ul.firstElementChild); // 第一个元素子节点
+        console.log(ul.lastElementChild);  // 最后一个元素子节点
+        // 上面两个有兼容性问题 IE9以上才支持
+        // 实际开发可以这样写
+        console.log(ul.children[0]); 
+        console.log(ul.children[ul.children.length-1]);
+        // 3.兄弟节点
+        console.log(ul.nextSibling); // 下一个兄弟节点包括文本节点
+        console.log(ul.previousSibling); // 上一个兄弟节点包括文本节点
+        console.log(ul.nextElementSibling); //下一个元素兄弟节点
+        console.log(ul.previousElementSibling); //上一个元素兄弟节点 
+         // 上面两个有兼容性问题 IE9以上才支持
+
+        //  创建节点
+        // 1.创建元素节点
+        var li = document.createElement('li');
+        // 2.添加节点 node.appendChild(child) node父级 child 子级
+        ul.appendChild(li); // 在后面添加一个li
+        // 3.添加节点 node.insertBefore(child,指定元素) 添加一个节点在指定元素前面
+        var li1 = document.createElement('li');
+        ul.insertBefore(li1,ul.children[0]);
+
+        // 删除节点 node.removeChild(child)
+        ul.removeChild(ul.children[1]);
+
+        // 复制节点 node.cloneNode()
+        var liNode = ul.children[1].cloneNode(true); // 括号里面是空或是false  浅拷贝 则只赋值标签，不赋值内容 里面是true则是深拷贝
+        ul.appendChild(liNode);
+
+    </script>
+</body>
+</html>

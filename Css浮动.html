@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 浮动的标签默认顶对齐 可以用margin改变其位置 */
+        div {
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+        }
+        .one {
+            background-color: pink;
+        }
+        .two {
+            background-color: green;
+        }
+
+        img {
+            width: 100px;
+            /* 加float */
+            float: left;;
+        }
+
+        .three {
+            background-color: pink;
+            /* left 最左 right 最右 */
+            float: left;
+        }
+        .four {
+            background-color: aqua;
+            float: left;
+            /* 两个都是left 可以去掉空格间隙问题 */
+        }
+
+        /*
+         CSS书写顺序：浏览器执行效率更高
+           1.浮动/display 
+           2.盒子模型: margin border padding 宽高背景色
+           3.文字样式 
+        */
+    </style>
+</head>
+<body>
+    <!-- 浏览器解析行内块或者行内标签的时候，如果标签换行书写会产生一个空格的间隙 -->
+    <div class="one">one</div>
+    <div class="two">two</div>
+    <!-- 浮动作用 -->
+    <!-- 1.图文环绕 -->
+    <br>
+    <img src="./images/蒂蒂.jpeg" alt="">
+    蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂
+    <br><br><br><br>
+    <!-- 2. 网页布局：块在一行排列 -->
+    <div class="three">three</div>
+    <div class="four">four</div>
+
+    <!-- 特点 -->
+    <!-- 1.浮动元素会脱离标准流，在标准流中不占位置 -->
+    <!-- 2.浮动元素比标准元素高半个级别，可以覆盖标准流中的元素，即盒子能覆盖，但文字不能覆盖 -->
+    <!-- 3.浮动找浮动，下一个浮动元素会在下一个浮动元素后面左右浮动  -->
+    <!-- 4.浮动后的标签具备行内块特点 -->
+    <!-- 注意：浮动标签不能用margin：0 auto 水平居中 -->
+
+
+</body>
+</html>

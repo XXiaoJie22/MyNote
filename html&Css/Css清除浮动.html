@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 方法1.额外标签 */
+
+        /* 方法2.单伪元素 */
+        /* 和额外标签法一样的原理 */
+        .clearfix::after {
+            content: '';
+            /* 伪元素添加的标签是行内，而这需要块 */
+            display: block;
+            clear: both;
+
+            /* 为了兼容性 */
+            height: 0;
+            visibility: hidden;
+        }
+        /* 方法3.双伪元素 */
+        /*.clearfix::before 作用：解决外边距塌陷问题 */
+        .clearfix::before,
+        .clearfix::after {
+            /* 伪元素必须要有content */
+            content: '';
+            display: table;
+        }
+        /* 真正清除浮动的标签 */
+        .clearfix::after {
+            clear: both;
+        }
+        /* 需要用到就在标签里面加 class = clearfix 出现塌陷问题也直接用 */
+    </style>
+</head>
+<body>
+    
+</body>
+</html>

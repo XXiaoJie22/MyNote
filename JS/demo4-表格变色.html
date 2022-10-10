@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        table {
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+            border: 0;
+        }
+        th,
+        td {
+            padding-left: 25px;
+            padding-right: 25px;;
+        }
+        tbody td {
+            border-bottom: 1px solid rgb(99, 94, 94);
+        }
+        thead tr {
+            /* display: block; */
+            background-color: rgb(38, 136, 241);
+            
+        }
+        .bg {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <table >
+        <thead>
+            <tr>
+                <th>代码</th>
+                <th>名称</th>
+                <th>最新公布净值</th>
+                <th>累计净值</th>
+                <th>超前单位净值</th>
+                <th>净值增长率</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>003526</td>
+                <td>农银会穗3个月定期开放债卷</td>
+                <td>1.075</td>
+                <td>1.079</td>
+                <td>1.074</td>
+                <td>+0.047%</td>
+            </tr>
+            <tr>
+                <td>003526</td>
+                <td>农银会穗3个月定期开放债卷</td>
+                <td>1.075</td>
+                <td>1.079</td>
+                <td>1.074</td>
+                <td>+0.047%</td>
+            </tr>
+            <tr>
+                <td>003526</td>
+                <td>农银会穗3个月定期开放债卷</td>
+                <td>1.075</td>
+                <td>1.079</td>
+                <td>1.074</td>
+                <td>+0.047%</td>
+            </tr>
+            <tr>
+                <td>003526</td>
+                <td>农银会穗3个月定期开放债卷</td>
+                <td>1.075</td>
+                <td>1.079</td>
+                <td>1.074</td>
+                <td>+0.047%</td>
+            </tr>
+            <tr>
+                <td>003526</td>
+                <td>农银会穗3个月定期开放债卷</td>
+                <td>1.075</td>
+                <td>1.079</td>
+                <td>1.074</td>
+                <td>+0.047%</td>
+            </tr>
+            <tr>
+                <td>003526</td>
+                <td>农银会穗3个月定期开放债卷</td>
+                <td>1.075</td>
+                <td>1.079</td>
+                <td>1.074</td>
+                <td>+0.047%</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var tr = document.querySelector('tbody').querySelectorAll('tr');
+        for(i = 0;i<tr.length;i++){
+            tr[i].onmouseover = function(){
+                this.className = 'bg';
+            }
+            tr[i].onmouseout = function(){
+                this.className = '';
+            }
+        }
+    </script>
+</body>
+</html>

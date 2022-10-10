@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./animate.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .fo {
+            position: relative;
+            margin: 200px auto;
+            width: 482px;
+            height: 270px;
+            /* border: 2px solid black; */
+            overflow: hidden;
+        }
+       
+        .PBox {
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* border: 2px solid black; */
+            width: 500%;
+            
+
+        } 
+        .Lb,
+        .Rb {
+            
+            display: none;
+            position: absolute;
+            top: 50%;
+            margin-top: -20px;
+            text-decoration: none;
+            width: 24px;
+            height: 40px;
+            background: rgba(0, 0, 0, .3);
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+            font-family: 'icomoon';
+            font-size: 18px;
+            z-index: 2;
+        }
+        .Rb {
+            right: 0;
+        }
+        .PBox li {
+            float: left;
+            list-style: none;
+        }
+        .PBox img {
+            
+            width: 482px;
+            height: 270px;
+        }
+        .fo ol  {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            margin-left: -30px;
+        }
+        .fo ol li{
+            float: left;
+            width: 10px;
+            height: 10px;
+            margin: 0 4px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            list-style: none;
+            cursor: pointer;
+        }
+        .one {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="fo"> 
+        <a href="javascript:;" class="Lb">&lt;</a>
+        <a href="javascript:;" class="Rb">&gt;</a>
+        <ul class="PBox">
+            <li><img src="./imgs/2.jpeg" alt=""  ></li>
+            <li><img src="./imgs/1.jpeg" alt="" ></li>
+            <li><img src="./imgs/3.jpeg" alt="" ></li>
+            <li><img src="./imgs/4.jpeg" alt=""></li>
+        </ul>
+        <ol>
+
+        </ol>
+    </div>
+    <script>
+        var Lb = document.querySelector('.Lb');
+        var Rb = document.querySelector('.Rb');
+        var PBox = document.querySelector('.PBox');
+        var fo = document.querySelector('.fo');
+        var ol = document.querySelector('.fo>ol');
+        var a = 5; //移动距离
+        var Fwidth = 482; // 图片宽度
+        var Fnum = 4; // 图片数量
+        // 右边按钮
+        var num = 0;
+        var flag = true; //设置节流阀 让图片不能多次点击转的太快
+        Rb.addEventListener('click',function(){
+            if (flag ){
+                flag = false //关闭节流阀
+                if(num == Fnum){
+                PBox.style.left = 0 ;
+                num = 0;
+                }
+                num++;
+                // animate 里面有个回调函数
+                animate(PBox,- num * Fwidth,function(){
+                    flag = true; // 打开节流阀
+                });
+                //  下方按钮跟着变化
+                for(var i = 0 ; i < Fnum; i++){
+                        ol.children[i].style.background = '';
+                }
+                if(num == Fnum){
+                    ol.children[0].style.background = 'red';
+                }else{
+                    ol.children[num].style.background = 'red';
+                }
+            }
+            
+            
+        })
+        // 左边按钮
+        Lb.addEventListener('click',function(){
+            // var temp = PBox.offsetLeft;
+            // var timer = setInterval(function(){
+            //     if (PBox.offsetLeft - temp >= 482){
+            //         clearInterval(timer);
+            //     }else if(PBox.offsetLeft - temp + a >=482){
+            //         PBox.style.left = temp  + 482 +'px';
+            //     }else{
+            //         PBox.style.left = PBox.offsetLeft + a +'px';
+            //     }
+            // },1)
+            // })
+            if (flag){
+                flag = false;
+                if (num == 0){
+                 PBox.style.left = - Fnum * Fwidth  +'px';
+                 num = Fnum;
+            }
+            num--;
+            animate(PBox,- num * Fwidth,function(){
+                flag = true;
+            });
+            // 下方按钮跟着变化
+            for(var i = 0 ; i < Fnum; i++){
+                ol.children[i].style.background = '';
+            }
+        
+            ol.children[num].style.background = 'red';
+            }
+
+        })
+        // 隐藏按钮
+        // 经过时出现
+        fo.addEventListener('mouseenter',function(){
+            Lb.style.display = 'inline';
+            Rb.style.display = 'inline';
+            // 清空自动播放定时器
+            clearInterval(timer);
+            timer = null; // 清空定时器变量
+        })
+        // 离开时隐藏
+        fo.addEventListener('mouseleave',function(){
+            Lb.style.display = 'none';
+            Rb.style.display = 'none';
+            // 自动播放
+            timer = setInterval(function(){
+            Rb.click();
+        },2000)
+        })
+        
+        // 根据图片数量动态加li
+        // console.log(PBox.children.length);
+        for(var i = 0;i<Fnum ;i ++){
+            var li = document.createElement('li');
+            ol.appendChild(li);
+            // 设置索引号
+            li.setAttribute('index',i);
+            ol.children[i].addEventListener('click',function(){
+                for(var i = 0 ; i < Fnum; i++){
+                    ol.children[i].style.background = '';
+                }
+                this.style.background = 'red'; // 颜色变化
+                // 点击哪个圈移动到哪张图
+                var index = this.getAttribute('index');
+                animate(PBox, -index * Fwidth);
+                num = index; // 让下方按钮和左右两个按钮互动
+            })
+        }
+        ol.children[0].style.background = 'red';
+        // 克隆第一张图片  图片无缝滑动原理就是克隆第一张图片,然后点最后一张的时候直接转到第一张
+        var liCopy1 = PBox.children[0].cloneNode(true);
+        PBox.appendChild(liCopy1);
+
+        // 自动播放轮播图
+
+        var timer = setInterval(function(){
+            // 由于自动播放功能类似与点击左右按钮,因此可以使用 手动调用点击事件
+            Rb.click();
+        },2000)
+    </script>
+</body>
+</html>

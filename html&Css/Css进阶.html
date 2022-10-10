@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 后代选择器 */
+        /* 父+空格+后代 */
+        /* 选择后代所有标签 */
+        div p {
+            color: blue;
+        }
+        /* 后代可加任何选择器 */
+        /* 只有div里面的子代可以使用cl类 */
+        div .cl {
+            color: aqua;
+        }
+        /* 子代选择器 */
+        /* 父+ > +后代 */
+        /* 只选择该代标签,其后代不会选择 */
+        div>a {
+            color: red;
+            /* transition 过渡 ，配合hover使用，让属性慢慢变化,想要变什么属性就加什么属性 可写all 表示所有值 */
+            transition: color 1s;
+        }
+        /* 并集选择器 逗号隔开 */
+        h1,
+        h2 {
+            color: aquamarine;
+        }
+        /* 交集选择器 */
+        /* 选择带cl类的p标签 */
+        p.cl {
+            color: rgb(114, 99, 80);
+        }
+        /* hover伪类选择器 */
+        /* 悬停时候的状态 */
+        div>a:hover {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <p class="cl">这是一个p标签</p>
+    <div>
+        <a href="#">这是div里面的a</a>
+        <p>这是div的儿子/p>
+        <p class="cl">这是div的儿子 </p>
+        <p>
+            <a href="#">这是div里面的p里面的a</a>    
+        </p>
+        <h1>h1</h1>
+        <h2>h2</h2>
+        
+    </div>
+</body>
+</html>

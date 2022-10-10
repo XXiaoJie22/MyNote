@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--  内嵌式 作用范围：当前页面 使用场景：小案例 -->
+    <!-- css写在head里面的title下面，style标签 -->
+    <style>
+        /* css注释 */
+        /* 这里写的都是css */
+        /* 标签选择器{css属性：属性值;} */
+        /* 选中的所有标签都生效 */
+        p {
+            /* 文字颜色变红 */
+            color: red;
+            /* 字体变大 */
+            font-size: 30px;
+            /* 背景颜色 */
+            background-color: green;
+            /* width height */
+            width: 300px;
+            height: 100;
+        }
+    </style>
+    <!-- 外联式 作用范围：多个页面 使用场景：项目中 -->
+    <!-- 关系=样式表 -->
+    <link rel="stylesheet" href="./CSS1.css">
+</head>
+<body>
+    <p>这是一个p标签</p>
+    <p1>这是一个p1标签</p1>
+    <!-- 行内式 作用范围：当前标签 使用场景：配合js使用 -->
+    <div style="color: green; font-size: 30px;">这是一个div标签</div>
+</body>
+</html>

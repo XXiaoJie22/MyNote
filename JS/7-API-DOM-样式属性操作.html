@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .div1 {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        .box {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            border: 1px solid rgb(232, 214, 214);
+            margin: 0 auto;
+            /* 默认是block  none是关闭 */
+            display: block; 
+        }
+        .img1 {
+            width: 80px;
+            height: 80px;
+        }
+        .close {
+            position: absolute;
+            top: -1px;
+            left: -14px;
+            width: 14px;
+            height: 24px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1" index = '1' id = 'one'></div>
+    <div class="box">
+        蒂蒂
+        <img src="../html&Css/images/蒂蒂.jpeg" alt="" class="img1">
+        <i class="close">x</i>
+    </div>
+    <script>
+        // 改变盒子样式
+        // 1.用element.style 行内式操作  修改样式比较少或者功能简单的情况下使用
+        var div = document.querySelector('.div1');
+        div.onclick = function() {
+            // div.style
+            this.style.backgroundColor = 'blue';
+            this.style.width = '200px';
+            
+        }
+
+        // 关闭图片
+        var box = document.querySelector('div.box');
+        var close = document.querySelector('.close');
+        close.onclick = function() {
+            box.style.display = 'none';
+        }
+
+        // 2.类名操作
+        div.onmouseover = function() {
+            // 让当前类名改为box
+            // this.className = 'box';
+            // 如果想保留原来类名 多类名选择器就好了
+            this.className = 'div1 box';
+        }
+
+        // 获得自定义属性(程序员自定义的)值的方法 element.getAttribute('属性') 也可以获取内置属性
+        // 内置属性可以用element.属性来获取
+        console.log(div.id);
+        console.log(div.getAttribute('id'));
+        console.log(div.getAttribute('index'));
+        // 设置属性值
+        // 1.内置的 element.属性 = '值'
+        div.id = 'two';
+        console.log(div.id);
+        // 2.自定义属性值 element.setAttribute ('属性',值) 这个也可以改内置属性
+        div.setAttribute('index',2);
+        console.log(div.getAttribute('index'));
+        // 移除属性 element.removeAttribute('属性')
+        div.removeAttribute('index');
+
+        // h5规定自定义属性由data-开头,例data-index
+        div.setAttribute('data-time',20);
+        console.log(div.getAttribute('data-time'));
+        // h5新增获取自定义属性方法
+        console.log(div.dataset.time);
+    </script>
+</body>
+</html>

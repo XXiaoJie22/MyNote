@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="time">2022-04-07</div>
+    <ul>
+        <li>1233211234567</li>
+        <li>1233211234567</li>
+        <li>1233211234567</li>
+        <li>1233211234567</li>
+        <li>1233211234567</li>
+    </ul>
+    <ol id="ye">
+        <li>12358</li>
+        <li>12358</li>
+        <div class="box">盒子</div>
+        <div class="box">盒子</div>
+    </ol>
+    <script>
+        // 获取有id的标签 返回的是对象
+        var timer = document.getElementById('time');
+        console.dir(timer); // 打印返回的元素对象，更好查看里面的属性和方法
+        var lis = document.getElementsByTagName('li'); // 当前文本下的li标签 返回 获取元素对象的集合，以伪数组的形式存储
+        console.log(lis);
+        console.log(lis[1]);
+        // 获取某个元素内指定标签名的子元素
+        var ol = document.getElementById('ye');
+        console.log(ol.getElementsByTagName('li'));
+
+        // h5新增方法
+        // 1.通过类名返回对象集合 同id
+        var boxs = document.getElementsByClassName('box');
+        console.log(boxs);
+        // 2.返回指定选择器的第一个元素对象 里面的选择器要加符号
+        var firstBox = document.querySelector('.box'); // class选择器
+        var ti = document.querySelector('#time');
+        var lli = document.querySelector('li');
+        // 3. 返回指定选择器所有对象集合 加入参数同上
+        var allBox = document.querySelectorAll('.box');
+
+        // 获取body对象 document.body
+        // var bodyEle = document.body;
+        // 获取html元素
+        // var htmlele = document.documentElement;
+    </script>
+</body>
+</html>

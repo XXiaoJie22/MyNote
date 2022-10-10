@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .one,.hello
+         {
+            width: 300px;
+            height: 30px;
+            background-color: pink;
+            color: #fff;
+            margin: 0 auto;
+            line-height: 30px;
+            text-align: center;
+        }
+        .pc {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="hello"></div>
+    <button>显示当前系统事件</button>
+    <div class="one">now time</div>
+    <p class="one">time</p>
+    <p class="two">
+        我是文字
+        <span>123</span>
+    </p>
+    <button class="ldd">蓝蒂蒂</button>
+    <button class="hdd">红蒂蒂</button> 
+    <br>
+    <img src="../html&Css/images/pick.gif" alt="" title="蓝蒂蒂" class="pc">
+
+    <button class="btn1">按钮</button>
+    <input type="text" placeholder="请输入内容" class="inp1">
+    <script>
+        // 改变元素内容：1.element.innerText 
+        //   2.element.innerHTML
+        // 点击按钮  div里面的文字会发生变化
+        // 1. 获取元素
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div.one');
+        // 2.注册事件
+        btn.onclick = function() {
+            div.innerText = getDate();
+        }
+
+        function getDate() {
+            var date = new Date;
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var dates = date.getDate();
+            var day = date.getDay();
+            var days = ['星期天','星期一','星期二','星期三','星期四','星期五','星期六'];
+            var h = date.getHours();
+            h = h < 10 ? '0'+h : h; // 小于10前面加个0,好看一点
+            var m = date.getMinutes();
+            m = m < 10 ? '0' + m : m;
+            var s = date.getSeconds();
+            s = s < 10 ? '0' + s : s;
+            return '今天是：' + year + '年' + month + '月' + dates + '日 ' + days[day] + ' '+h + ':' + m + ':' + s ;
+        }
+        // 不添加事件 页面加载直接显示
+        var p = document.querySelector('p.one');
+        p.innerText = getDate();
+
+        // innerText和innerHTML区别 
+        // innerText 不识别html标签 去除空格,换行和html标签
+        // innerHTML 识别html标签  w3c标准 推荐使用 
+        var p1 = document.querySelector('p.two');
+        console.log(p1.innerText);
+        console.log(p1.innerHTML);
+
+        // 修改元素属性 元素里面src,href,id,alt,title 都可以改变
+        // 1.获取属性
+        var ldd = document.querySelector('button.ldd');
+        var hdd = document.querySelector('button.hdd');
+        var img = document.querySelector('img.pc');
+        // 2.注册事件
+        hdd.onclick = function() {
+            img.src = '../html&Css/images/蒂蒂.jpeg';
+            img.title = '红蒂蒂';
+        }
+        ldd.onclick = function() {
+            img.src = '../html&Css/images/pick.gif';
+            img.title = '蓝蒂蒂';
+        }
+
+        // 动态时间问候
+        var div3 = document.querySelector('div.hello');
+        var date = new Date;
+        var h = date.getHours();
+        if (h<12){
+            div3.innerHTML = '上午好！';
+        }else if (h<18){
+            div3.innerHTML = '下午好！';
+        }else {
+            div3.innerHTML = '晚上好！';
+        }
+
+        // 可修改如下表单属性 type,value,checked,selected,disabled
+        var btn2 = document.querySelector('button.btn1');
+        var input = document.querySelector('input.inp1');
+        btn2.onclick = function(){
+            // input.innerHTML 这个是普通盒子
+            input.placeholder = '被点击了';
+            // 如果想要某个表单禁用 用disabled
+            // btn2.disabled = true; 与下面等价
+            this.disabled = true;
+        }
+
+    </script>
+</body>
+</html>

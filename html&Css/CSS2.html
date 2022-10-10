@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 类选择器 */
+        .red {
+            color: red;
+        }
+        .size {
+            font-size: 30px;
+        }
+        /* id选择器，配合js使用 */
+        /* id选择器一个页面只能用一次，一个标签只能有一个id选择器 */
+        #one {
+            color: blue;
+        }
+        /* 通配符选择器 改变全部标签 */
+        * {
+            /* 字体大小 默认16px */
+            font-size: 20px;
+            /* 字体粗细 默认400px 加粗700px 取值100-900*/
+            font-weight: 700;
+            /* 控制文字是否倾斜 talic倾斜 normal默认*/
+            font-style: italic;
+            /* 控制字体 默认微软雅黑 三类字体：无衬线字体sans-serif，衬线字体serif，等宽字体monospace*/
+            font-family: 黑体;
+            /* 如果电脑没安装雅黑字体就显示黑体，也没有就显示任意一种无衬线字体 */
+            font-family: 微软雅黑,黑体,sans-serif;
+        }
+        .font{
+            /* font复合属性 */
+            /* font: style weight size/line-height 字体 */
+            /* 省略要求：只能省略前两个属性，省略就相当于默认值 */
+            font: italic 700 40px/2 黑体;
+        }
+        .text {
+            /* 文本缩进 */
+            /* em是两个字的大小 */
+            text-indent: 2em;
+            /* 文本水平对齐 input、img标签都可使用 */
+            /* left 左对齐默认值 center 居中 right 右对齐 */
+            text-align: center;
+        }
+        /* 图片对齐要放在body里面 */
+        body {
+            text-align: center;
+            /* 背景居中可以用ver  专治垂直方向对不齐 */
+            /* vertical-align: middle; */
+        }
+
+        /* 文本修饰线 */
+        /* text-decoration */
+        /* 取值underline 下划线 line-thro 删除线 overline 上划线 none 无修饰线 */
+
+        /* 行高 */
+        /* 取值 数字+px或倍数(自己字号的倍数) */
+        .line {
+            line-height: 2;
+        }
+        .div {
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            /* 让div p h等大盒子居中 */
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <p class="red">!!!</p>
+    <p>???</p>
+    <!-- 一个标签可以多个类名 -->
+    <div class="red size">233</div>
+    <div id="one">ccc</div>
+    <div class="font">啊对对对 </div>
+    <div class="text line">《蝙蝠侠：侠影之谜》（Batman Begins）改编自DC漫画公司的经典超级英雄漫画《蝙蝠侠》，由克里斯托弗·诺兰执导，克里斯蒂安·贝尔主演，于2005年全球公映。影片是诺兰执导的蝙蝠侠系列三部曲的第一部作品。影片是蝙蝠侠系列电影的重启，开启了一个完全独立的系列，讲述布鲁斯·韦恩成为蝙蝠侠的经过，将一个超级英雄的崛起之路娓娓道来，摆脱了之前一味渲染蝙蝠侠超凡身手的窠臼，注重对其倾注心理上的认同。</div>
+    <img src="./images/蒂蒂.jpeg" alt=""  width="300">
+    <div class="div"></div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .cen {
+            width: 1000px;
+            margin: 100px auto;
+        }
+        .one ul li{
+            list-style: none;
+            float: left;
+            padding: 0 20px;
+            text-align: center;
+            height: 38px;
+            line-height: 38px;
+            cursor: pointer;
+        }
+        .one {
+
+            height: 40px;
+            background-color: rgb(237, 237, 237);
+            border: 1px solid rgb(198, 191, 191);
+            margin: 0 auto;
+        }
+        .one .moren{
+            background-color: red;
+            color: aliceblue;
+        }
+        .two div{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="cen">
+        <div class="one">
+            <ul>
+                <li class="moren">商品介绍</li>
+                <li>规格与包装</li>
+                <li>售后保障</li>
+                <li>商品评价</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="two">
+            <div style="display: block;">商品介绍模块内容</div>
+            <div>规格与包装模块内容</div>
+            <div>售后保障模块内容</div>
+            <div>商品评价模块内容</div>
+            <div>手机社区模块内容</div>
+        </div>
+    </div>
+    <script>
+        var li = document.querySelectorAll('li');
+        var div = document.querySelector('.two').querySelectorAll('div');
+        for(var i = 0;i<li.length;i++){
+            // 给五个li设定索引号
+            li[i].setAttribute('index',i);
+            li[i].onclick = function(){
+                for(var i =0;i<li.length;i++){
+                    li[i].className = '';
+                    div[i].style.display = 'none';
+                }
+                this.className = 'moren';
+                // 获取索引号
+                index = this.getAttribute('index');
+                div[index].style.display = 'block'; // 这里不能用div[i],因为点击结束i默认li.length+1
+                // console.log(i);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">唐伯虎</button>
+    <button class="one">方法监听注册事件</button>
+    <div>123</div>
+    <ul>
+        <li>abc</li>
+        <li>abc</li>
+        <li>abc</li>
+    </ul>
+    <a href="#">12</a>
+    <script>
+        // 传统方式 同一个点击事件，后面的会覆盖前面的
+
+        // 点击一个按钮，弹出对话框
+        // 事件由三部分组成 事件源 事件类型 事件处理程序 称为事件三要素
+        // 1.事件源 事件被触发的对象 
+        var btn = document.getElementById('btn');
+        // 2.事件类型  如何触发 什么事件 比如鼠标点击(onclick)
+        // 事件处理程序 通过一个函数赋值的方式完成
+        btn.onclick = function() {
+            alert('点秋香');
+            // 删除事件 就是点了一次后就点不了了
+            btn.onclick = null;
+        }
+        // 执行事件的步骤
+        // 1.获取事件源
+        // 2.注册事件（绑定事件）
+        // 3.添加事件处理程序（采取函数赋值形式）
+        /*
+        常见的鼠标事件
+        onclick 鼠标点击左键触发 
+        onmouseover 鼠标经过触发 经过子盒子会再次触发 
+        mouseenter 只会经过父盒子才会输出 因为mouseenter没有冒泡 它搭配mouseleave 鼠标离开 同样没有冒泡
+        onmouseout 鼠标离开触发  
+        onfocus 获得鼠标焦点触发 
+        onbulr 离开鼠标焦点触发 
+        onmousemove 鼠标移动触发 
+        onmouseup 鼠标弹起触发 
+        onmousedown 鼠标按下触发
+        onkeyup 键盘松开触发
+        onkeydown 键盘按下触发
+        onkeypress 键盘按下触发  但不识别功能键 比如ctrl
+        */
+
+
+        // 2.方法监听注册事件 里面的事件类型是字符串并且不带on
+        // addEventListener里面第三个参数是true 则处于捕获阶段 false则是冒泡阶段，不写就是默认false
+        var btn1 = document.querySelector('.one');
+        btn1.addEventListener('click',function(){ 
+            alert('hi');
+        })
+        // 不会覆盖
+        btn1.addEventListener('click',fn)
+        function fn() { 
+            alert('how are you');
+            // 解绑 删除事件
+            btn1.removeEventListener('click',fn) 
+        } 
+
+         // 事件对象
+         var div = document.querySelector('div');
+        div.onclick = function(e) {
+                // console.log(e);
+                // console.log(window.event);
+                // e = e || window.event;
+                console.log(e);
+
+
+            }
+            // 监听方式
+            // div.addEventListener('click', function(e) {
+            //         console.log(e);
+
+        //     })
+        // 1. event 就是一个事件对象 写到我们侦听函数的 小括号里面 当形参来看
+        // 2. 事件对象只有有了事件才会存在，它是系统给我们自动创建的，不需要我们传递参数
+        // 3. 事件对象 是 我们事件的一系列相关数据的集合 跟事件相关的 比如鼠标点击里面就包含了鼠标的相关信息，鼠标坐标啊，如果是键盘事件里面就包含的键盘事件的信息 比如 判断用户按下了那个键
+        // 4. 这个事件对象我们可以自己命名 比如 event 、 evt、 e
+        // 5. 事件对象也有兼容性问题 ie678 通过 window.event 兼容性的写法  e = e || window.event;
+
+        // 常见事件对象的属性和方法
+        // 1. e.target 返回的是触发事件的对象（元素）  this 返回的是绑定事件的对象（元素）
+        // 区别 ： e.target 点击了那个元素，就返回那个元素 this 那个元素绑定了这个点击事件，那么就返回谁
+        var div = document.querySelector('div');
+        div.addEventListener('click', function(e) {
+            console.log(e.target);
+            console.log(this);
+
+        })
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click', function(e) {
+                // 我们给ul 绑定了事件  那么this 就指向ul  
+                console.log(this);
+                console.log(e.currentTarget);
+
+                // e.target 指向我们点击的那个对象 谁触发了这个事件 我们点击的是li e.target 指向的就是li
+                console.log(e.target);
+
+                // e.clientX,e.clientY 鼠标在可视区的x和y坐标
+
+                // e.pageX,e.pageY 鼠标在页面文档的坐标
+
+            })
+            // 了解兼容性
+            // div.onclick = function(e) {
+            //     e = e || window.event;
+            //     var target = e.target || e.srcElement;
+            //     console.log(target);
+
+        // }
+        // 2. 了解 跟 this 有个非常相似的属性 currentTarget  ie678不认识
+
+        // 2.e.type 返回事件类型 比如click 不带on
+
+        // 3.e.preventDefault()  阻止默认行为（事件） 比如让链接不跳转，或者让提交按钮不提交
+        var   a = document.querySelector('a');
+        a.addEventListener('click',function(e){
+            e.preventDefault();
+        })
+
+        // 4.e.stopPropagation() 阻止冒泡 面试常问
+        a.addEventListener('click',function(e){
+            alert('a');
+            e.stopPropagation();
+        })
+
+        // 5.事件委托  原理：不是每个子节点单独设置事件监听器，而是事件监听器设置在其父节点上，然后利用冒泡原理影响设置每个子节点  （面试常问 记住）
+        // 这样就不用像以前一个for循环给每个li添加事件了
+        ul.addEventListener('click',function(e){
+            alert('你好');  //点击li就可以了
+            // e.target 是我们点击的对象
+            e.target.style.backgroundColor = 'pink';
+        })
+
+        // 键盘事件对象
+        document.addEventListener('keyup',function(e){
+            console.log(e.keyCode); // 得到按的键的ASCII 不区分大小写
+            // keypress 这个区分大小写
+        })
+    </script>
+</body>
+</html>

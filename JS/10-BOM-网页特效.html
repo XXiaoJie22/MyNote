@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .father {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 100px;
+            border: 10px solid red;
+        }
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            margin: 50px;
+            overflow: auto;
+        }
+        .move {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background-color: pink;
+            left: 0;
+        }
+        .move1 {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            left: 0;
+            top: 120px;
+        } 
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son">蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂蒂</div>
+
+    </div>
+        <div class="move">1</div>
+        <button>点击了第二张动</button>
+        <div class="move1">2</div>
+    <script>
+        // offset 系列 动态获取 包括padding和magin和border
+        // 获得元素的偏移位置，不带单位 
+        var father = document.querySelector('.father');
+        var son = document.querySelector('.son');
+        console.log(father.offsetTop);
+        console.log(father.offsetLeft);
+        // 以带有定位的父亲为准，没有则以body为准
+        console.log(son.offsetTop);
+        console.log(son.offsetLeft);
+
+        // 得到元素大小
+        
+        console.log(father.offsetWidth);
+        console.log(father.offsetHeight);
+        
+        // 有定位返回父亲，没有则body
+        console.log(son.offsetParent);
+        // 有定位时等价于
+        console.log(son.parentNode);
+
+        // client 系列
+        // 返回元素边框大小
+        console.log(father.clientTop);
+        console.log(father.clientLeft);
+        // 得到元素大小，与offsetWidth相比，不包含边框
+        console.log(father.clientWidth);
+        console.log(father.clientHeight);
+
+        // 立即执行函数，不需要调用，立马能够自己执行的函数
+        //  写法 (function(){})() 或者 (function(){}())
+        (function(){
+            console.log(2);
+        })(); 
+        // 最后一个小括号可以看作传递形参
+        (function(a,b){
+            console.log(a+b);
+        })(1,2);
+        // 第二种写法一样
+        (function sum(a){
+            console.log(a);
+        }(1));
+        // 作用：独立创建了一个作用域，里面所有的变量都是局部变量，不会有命名冲突
+
+        // scroll系列 翻译就是滚动 返回实际宽度 不包含边框 如果内容超出盒子大小，返回的是内容的大小
+        console.log(son.scrollHeight);
+        // scrollTop 返回被卷去的上侧距离
+        // scrollLeft 返回被卷去的左侧距离
+        // onscroll 滚动事件，滚动条发生时的事件
+        son.addEventListener('scroll',function(){
+            console.log(son.scrollTop);
+        })
+        // window.pageYOffset  页面被卷去的头部 上面是元素被卷去
+        // window.pageXOffset  页面被卷去的左侧 
+
+
+        // 动画实现原理  通过定时器setInterval()不断移动盒子位置
+        var moveBox = document.querySelector('.move');
+        // 封装函数
+        function Move(obj,target){
+            // 加计时器
+            // var timer =  setInterval(function(){},)
+            // 因为moveBox是个对象，定时器不直接赋值，给对象加个属性进行赋值更好
+            obj.timer =  setInterval(function(){
+               if(obj.offsetLeft >= target){
+                clearInterval(obj.timer);
+               }
+               obj.style.left = obj.offsetLeft + 1 + 'px';
+           },30)
+        }
+        Move(moveBox,400);
+        var moveBox2 = document.querySelector('.move1');
+        var btn = document.querySelector('button');
+        function fn(){
+            Move(moveBox2,300);
+            btn.removeEventListener('click',fn);
+        }
+        btn.addEventListener('click',fn);
+    </script>
+</body>
+</html>
